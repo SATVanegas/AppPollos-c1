@@ -22,9 +22,6 @@ public class Pruebas {
             reposales.save(sl);
             reposales.findAll().forEach(System.out::println);
 
-
-
-
         }
 
     }

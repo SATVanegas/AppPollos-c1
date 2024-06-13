@@ -53,4 +53,19 @@ public class Expenses {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        return "Expenses{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", date=" + date +
+                ", total=" + total +
+                '}';
+    }
+    public boolean hasNullFields() {
+
+         return id == null || descripcion == null || date == null;
+    }
+
 }

@@ -32,13 +32,13 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
 
     @Override
     public Expenses searchById(Integer id) {
-        Expenses expenses = new Expenses();
+        Expenses expense = new Expenses();
         try (PreparedStatement ps = getConnection().prepareStatement("select * from expenses where id=?")) {
             ps.setInt(1,id);
 
             try (ResultSet rs = ps.executeQuery()){
                 if (rs.next()){
-                    expenses = getExpenses(rs);
+                    expense = getExpenses(rs);
                 }
             }
 
@@ -46,7 +46,15 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
             throw new RuntimeException(e);
         }
 
-        return expenses;
+        if (expense.hasNullFields()){
+            System.out.println("El elemento buscada no existe");
+        }
+
+        else {
+            return expense;
+        }
+
+
     }
 
     @Override
@@ -54,9 +62,9 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
         String sql = "";
 
         if (expenses.getId() != null && expenses.getId() > 0) {
-            sql = "UPDATE expenses SET descripcion=?, date=?, total=? WHERE id=?";
+            sql = "UPDATE expenses SET descripcion=?, fecha_gasto=?, total=? WHERE id=?";
         }else {
-            sql = "INSERT INTO customer(descripcion, date, total) VALUES (?, ?, ?)";
+            sql = "INSERT INTO customer(descripcion, fecha_gasto, total) VALUES (?, ?, ?)";
         }
         try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
             if (expenses.getId() != null && expenses.getId() > 0){
@@ -90,7 +98,7 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
         Expenses expenses = new Expenses();
         expenses.setId(resultSet.getInt("id"));
         expenses.setDescripcion(resultSet.getString("descripcion"));
-        expenses.setDate(resultSet.getDate("date"));
+        expenses.setDate(resultSet.getDate("fecha_gasto"));
         expenses.setTotal(resultSet.getDouble("total"));
         return expenses;
     }

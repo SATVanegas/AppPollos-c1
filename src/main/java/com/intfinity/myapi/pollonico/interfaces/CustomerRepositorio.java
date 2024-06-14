@@ -1,5 +1,6 @@
 package com.intfinity.myapi.pollonico.interfaces;
 
+import com.intfinity.myapi.pollonico.Help.Help;
 import com.intfinity.myapi.pollonico.Models.Customer;
 import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 
@@ -31,7 +32,7 @@ public class CustomerRepositorio implements RepositorioGenerico <Customer>{
     }
 
     @Override
-    public Customer searchById(Integer id) {
+    public void searchById(Integer id) {
         Customer customer = new Customer();
         try (PreparedStatement ps = getConnection().prepareStatement("select * from customer where id=?")) {
             ps.setInt(1,id);
@@ -46,6 +47,19 @@ public class CustomerRepositorio implements RepositorioGenerico <Customer>{
             throw new RuntimeException(e);
         }
 
+        if (customer.hasNullFields()){
+            Help.displayMessage("Gasto no encontrado"
+                    ,"verifica que se encunetre bien escrito",
+                    "El gasto con el id" + id+ " no existe");
+        }else {
+            System.out.println(rObjectId(customer));
+        }
+
+
+    }
+
+    @Override
+    public Customer rObjectId(Customer customer) {
         return customer;
     }
 

@@ -5,7 +5,8 @@ import java.util.List;
 public interface RepositorioGenerico <T> {
 
     List<T> findAll();
-    T searchById (Integer id);
+    void searchById (Integer id);
+    T rObjectId (T t);
     void save(T t);
     void remove(Integer id);
 

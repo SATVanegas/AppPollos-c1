@@ -1,5 +1,6 @@
 package com.intfinity.myapi.pollonico.interfaces;
 
+import com.intfinity.myapi.pollonico.Help.Help;
 import com.intfinity.myapi.pollonico.Models.Customer;
 import com.intfinity.myapi.pollonico.Models.Sales;
 import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
@@ -34,7 +35,7 @@ public class SalesRepositorio implements RepositorioGenerico <Sales>{
     }
 
     @Override
-    public Sales searchById(Integer id) {
+    public void searchById(Integer id) {
         Sales sales = new Sales();
 
         String query = "SELECT customer.id, customer.direccion, customer.telefono," +
@@ -55,6 +56,15 @@ public class SalesRepositorio implements RepositorioGenerico <Sales>{
             throw new RuntimeException(e);
         }
 
+        if (sales.hasNullFields()){
+            System.out.println("gay");
+        }else {
+            System.out.println(rObjectId(sales));
+        }
+    }
+
+    @Override
+    public Sales rObjectId(Sales sales) {
         return sales;
     }
 

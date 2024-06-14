@@ -108,4 +108,7 @@ public class Sales {
                 ", fechaCompra=" + fechaCompra +
                 '}';
     }
+    public boolean hasNullFields() {
+        return id == null;
+    }
 }

@@ -16,12 +16,7 @@ public class Pruebas {
 
         try(Connection conn = ConexionDataBase.getInstance()){
             RepositorioGenerico<Sales> reposales = new SalesRepositorio();
-            reposales.findAll().forEach(System.out::println);
-            Customer cs = new Customer(3);
-            Sales sl = new Sales(1,cs,90000.92,10,true, Date.valueOf("2024-06-13"));
-            reposales.save(sl);
-            reposales.findAll().forEach(System.out::println);
-
+            reposales.searchById(1);
         }
 
     }

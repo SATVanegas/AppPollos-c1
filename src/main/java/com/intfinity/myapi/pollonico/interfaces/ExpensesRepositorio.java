@@ -31,7 +31,7 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
     }
 
     @Override
-    public Expenses searchById(Integer id) {
+    public void searchById(Integer id) {
         Expenses expense = new Expenses();
         try (PreparedStatement ps = getConnection().prepareStatement("select * from expenses where id=?")) {
             ps.setInt(1,id);
@@ -50,14 +50,17 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
             Help.displayMessage("Gasto no encontrado"
                     ,"verifica que se encunetre bien escrito",
                     "El gasto con el id" + id+ " no existe");
+        }else {
+            System.out.println(rObjectId(expense));
         }
 
-        else {
-            return expense;
-        }
-
-         return expense;
     }
+
+    @Override
+    public Expenses rObjectId(Expenses expenses) {
+        return expenses;
+    }
+
 
     @Override
     public void save(Expenses expenses) {

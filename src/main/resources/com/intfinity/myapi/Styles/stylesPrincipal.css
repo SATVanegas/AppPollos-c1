@@ -1,0 +1,27 @@
+.btnsVbox{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.btnsVbox-hover {
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.btnsVbox:pressed {
+    -fx-background-color: black; /* Mantener el color de fondo negro cuando se presiona */
+    -fx-text-fill: white; /* Mantener el texto blanco cuando se presiona */
+    -fx-font-weight: bold; /* Mantener el texto en negrita cuando se presiona */
+    -fx-scale-x: 1; /* Evitar el cambio de escala en el eje X */
+    -fx-scale-y: 1; /* Evitar el cambio de escala en el eje Y */
+}
+
+.btnsVbox:armed {
+    -fx-background-color: black; /* Mantener el color de fondo negro cuando se arma */
+    -fx-text-fill: white; /* Mantener el texto blanco cuando se arma */
+    -fx-font-weight: bold; /* Mantener el texto en negrita cuando se arma */
+    -fx-scale-x: 1; /* Evitar el cambio de escala en el eje X */
+    -fx-scale-y: 1; /* Evitar el cambio de escala en el eje Y */
+}

@@ -1,6 +1,6 @@
 package com.intfinity.myapi.pollonico.interfaces;
 
-import com.intfinity.myapi.pollonico.Models.Customer;
+import com.intfinity.myapi.pollonico.Help.Help;
 import com.intfinity.myapi.pollonico.Models.Expenses;
 import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 
@@ -47,7 +47,9 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
         }
 
         if (expense.hasNullFields()){
-            System.out.println("El elemento buscada no existe");
+            Help.displayMessage("Gasto no encontrado"
+                    ,"verifica que se encunetre bien escrito",
+                    "El gasto con el id" + id+ " no existe");
         }
 
         else {
@@ -69,14 +71,10 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
         try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
             if (expenses.getId() != null && expenses.getId() > 0){
                 stmt.setInt(4, expenses.getId());
-                stmt.setString(1, expenses.getDescripcion());
-                stmt.setDate(2, expenses.getDate());
-                stmt.setDouble(3, expenses.getTotal());
-            }else {
-                stmt.setString(1, expenses.getDescripcion());
-                stmt.setDate(2, expenses.getDate());
-                stmt.setDouble(3, expenses.getTotal());
             }
+            stmt.setString(1, expenses.getDescripcion());
+            stmt.setDate(2, expenses.getDate());
+            stmt.setDouble(3, expenses.getTotal());
             stmt.executeUpdate();
 
         } catch (SQLException e) {

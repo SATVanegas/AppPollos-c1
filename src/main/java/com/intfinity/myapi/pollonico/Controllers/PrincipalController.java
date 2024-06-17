@@ -99,18 +99,28 @@ public class PrincipalController extends Application {
     }
 
     @FXML
-    private void ActivarPaneCustomer(){
-        TabPaneCus.setVisible(true);
+    private void ActivarPaneCustomer() {
+        ControladorDeTabs(TabType.CUSTOMER);
     }
 
     @FXML
-    private void ActivarPaneSales(){
-        TabPaneSales.setVisible(true);
+    private void ActivarPaneSales() {
+        ControladorDeTabs(TabType.SALES);
     }
 
     @FXML
-    private void ActivarPaneExpenses(){
-        TabPaneExpenses.setVisible(true);
+    private void ActivarPaneExpenses() {
+        ControladorDeTabs(TabType.EXPENSES);
     }
 
+    private void ControladorDeTabs(TabType tab) {
+        setTabVisibility(tab == TabType.CUSTOMER, tab == TabType.SALES, tab == TabType.EXPENSES);
+    }
+
+    private void setTabVisibility(boolean showCustomer, boolean showSales, boolean showExpenses) {
+        TabPaneCus.setVisible(showCustomer);
+        TabPaneSales.setVisible(showSales);
+        TabPaneExpenses.setVisible(showExpenses);
+    }
 }
+

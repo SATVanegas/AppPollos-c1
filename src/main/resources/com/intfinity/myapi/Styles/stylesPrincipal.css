@@ -25,3 +25,17 @@
     -fx-scale-x: 1; /* Evitar el cambio de escala en el eje X */
     -fx-scale-y: 1; /* Evitar el cambio de escala en el eje Y */
 }
+
+.titles{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-label-padding: 0;
+    -fx-padding: 4px;
+}
+
+.buton{
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}

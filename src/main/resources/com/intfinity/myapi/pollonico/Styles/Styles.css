@@ -1,0 +1,25 @@
+.root{
+    -fx-background-image: url("images/rg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.btnIngresar{
+    -fx-background-color: beige;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-border-color: yellow;
+    -fx-border-width: 2px;
+}
+
+.lblWelcome{
+    -fx-text-fill: beige;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-label-padding: 0;
+    -fx-padding: 4px;
+}
+
+.hola{
+    -fx-text-fill: beige;
+}

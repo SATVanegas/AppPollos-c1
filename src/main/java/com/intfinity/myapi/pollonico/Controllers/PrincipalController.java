@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,7 +26,15 @@ public class PrincipalController extends Application {
     @FXML
     private VBox VBPrincipal;
     @FXML
-    private ImageView image;
+    private TabPane TabPaneCus;
+    @FXML
+    private TabPane TabPaneSales;
+    @FXML
+    private TabPane TabPaneExpenses;
+
+
+
+
 
     public static void main(String[] args) {
         launch(args);
@@ -41,11 +49,6 @@ public class PrincipalController extends Application {
             primaryStage.setTitle("Principal");
             primaryStage.show();
 
-            image.setImage(new Image("../resources/com/intfinity/myapi/Images/rg.jpg"));
-
-            // Bind layoutX and layoutY properties to center the ImageView
-            image.layoutXProperty().bind(scene.widthProperty().subtract(image.fitWidthProperty()).divide(2));
-            image.layoutYProperty().bind(scene.heightProperty().subtract(image.fitHeightProperty()).divide(2));
         }catch (IOException e) {
             e.printStackTrace();
         }catch (Exception e) {
@@ -93,6 +96,21 @@ public class PrincipalController extends Application {
                 VBPrincipal.setTranslateX(-230);
             }
         });
-
     }
+
+    @FXML
+    private void ActivarPaneCustomer(){
+        TabPaneCus.setVisible(true);
+    }
+
+    @FXML
+    private void ActivarPaneSales(){
+        TabPaneSales.setVisible(true);
+    }
+
+    @FXML
+    private void ActivarPaneExpenses(){
+        TabPaneExpenses.setVisible(true);
+    }
+
 }

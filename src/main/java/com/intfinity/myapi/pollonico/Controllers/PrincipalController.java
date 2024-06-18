@@ -64,6 +64,9 @@ public class PrincipalController extends Application {
     public TextField txtFechaSa;
     public TextField txtPesoSa;
     public TextField txtEstadoSa;
+    public TextField txtTotalEx;
+    public TextField txtDesEx;
+    public TextField txtDateEx;
     List<Customer> customers;
     private int actualizacion = 0;
     private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
@@ -243,34 +246,47 @@ public class PrincipalController extends Application {
         }
 
     }
-//    // modificar para que coincida con delete sales
-//    @FXML
-//    private void updateSales(){
-//        boolean nameChanged = !txt.getText().equals(cs.getName());
-//        boolean phoneChanged = !txtPhoneUpdateCus.getText().equals(cs.getPhone());
-//        boolean addressChanged = !txtAddressUpdateCus.getText().equals(cs.getAddress());
-//
-//        if (!nameChanged && !phoneChanged && !addressChanged) {
-//            Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
-//        } else {
-//
-//            if (nameChanged) {
-//                cs.setName(txtNameUpdateCus.getText());
-//            }
-//
-//            if (phoneChanged) {
-//                cs.setPhone(txtPhoneUpdateCus.getText());
-//            }
-//
-//            if (addressChanged) {
-//                cs.setAddress(txtAddressUpdateCus.getText());
-//            }
-//
-//
-//            repoCustomer.save(cs);
-//        }
-//
-//    }
+    // modificar para que coincida con delete sales
+    @FXML
+    private void updateSales(){
+        boolean CusChanged = !txtCusUpdateSa.getText().equals(sl.getCustomer());
+        boolean MontoChanged = !txtMontoUpdateSa.getText().equals(sl.getMonto());
+        boolean CantidadChanged = !txtCantidadUpdateSa.getText().equals(sl.getCantidad());
+        boolean PesoChanged = !txtPesoUpdateIdSa.getText().equals(sl.getPeso());
+        boolean FechaChanged = !txtFechaUpdateIdSa.getText().equals(sl.getFechaCompra());
+        boolean EstadoChanged = !txtEstadoUpdateIdSa1.getText().equals(sl.isEstado());
+
+        if (!CusChanged && !MontoChanged && !CantidadChanged && !PesoChanged && !FechaChanged && !EstadoChanged) {
+            Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
+        } else {
+
+            if (CusChanged) {
+                cs.setName(txtCusUpdateSa.getText());
+            }
+
+            if (MontoChanged) {
+                cs.setPhone(txtMontoUpdateSa.getText());
+            }
+
+            if (CantidadChanged) {
+                cs.setAddress(txtCusUpdateSa.getText());
+            }
+
+            if (PesoChanged) {
+                cs.setAddress(txtPesoUpdateIdSa.getText());
+            }
+            if (FechaChanged) {
+                cs.setAddress(txtFechaUpdateIdSa.getText());
+            }
+            if (EstadoChanged) {
+                cs.setAddress(txtEstadoUpdateIdSa1.getText());
+            }
+
+
+            repoSales.save(sl);
+        }
+
+    }
 
     @FXML
     private void addSales() throws SQLException, ParseException {

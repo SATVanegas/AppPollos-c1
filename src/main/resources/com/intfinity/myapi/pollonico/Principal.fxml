@@ -217,7 +217,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnAddSa" layoutX="108.0" layoutY="488.0" mnemonicParsing="false" onAction="#addSales" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD CUSTOMER">
+                        <Button fx:id="btnAddSa" layoutX="108.0" layoutY="488.0" mnemonicParsing="false" onAction="#addSales" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD SALES">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -378,22 +378,22 @@
                               <Font size="62.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtNameEx" layoutX="108.0" layoutY="138.0" prefHeight="39.0" prefWidth="264.0" promptText="NAME">
+                        <TextField fx:id="txtTotalEx" layoutX="108.0" layoutY="138.0" prefHeight="39.0" prefWidth="264.0" promptText="TOTAL">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="tfPhoneEx" layoutX="108.0" layoutY="212.0" prefHeight="39.0" prefWidth="264.0" promptText="PHONE">
+                        <TextField fx:id="txtDesEx" layoutX="108.0" layoutY="212.0" prefHeight="39.0" prefWidth="264.0" promptText="DESCRIPTION">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="tfAddressEx" layoutX="108.0" layoutY="288.0" prefHeight="39.0" prefWidth="264.0" promptText="ADDRESS">
+                        <TextField fx:id="txtDateEx" layoutX="108.0" layoutY="288.0" prefHeight="39.0" prefWidth="264.0" promptText="DATE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnAddEx" layoutX="108.0" layoutY="359.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD CUSTOMER">
+                        <Button fx:id="btnAddEx" layoutX="108.0" layoutY="359.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD EXPENSE">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -432,27 +432,22 @@
                               <Font size="22.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtNameUpdateEx" layoutX="28.0" layoutY="169.0" prefHeight="30.0" prefWidth="190.0">
+                        <TextField fx:id="txtTotalUpdateEx" layoutX="28.0" layoutY="169.0" prefHeight="30.0" prefWidth="190.0">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtPhoneUpdateEx" layoutX="28.0" layoutY="235.0" prefHeight="30.0" prefWidth="190.0">
+                        <TextField fx:id="txtDescUpdateEx" layoutX="28.0" layoutY="235.0" prefHeight="30.0" prefWidth="190.0">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtAddressUpdateEx" layoutX="28.0" layoutY="301.0" prefHeight="30.0" prefWidth="190.0">
+                        <TextField fx:id="txtFechaUpdateEx" layoutX="28.0" layoutY="301.0" prefHeight="30.0" prefWidth="190.0">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtUpdateIdEx" layoutX="28.0" layoutY="360.0" prefHeight="30.0" prefWidth="190.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </TextField>
-                        <Button fx:id="btnUpdateEx" layoutX="30.0" layoutY="424.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="UPDATE">
+                        <Button fx:id="btnUpdateEx" layoutX="30.0" layoutY="424.0" mnemonicParsing="false" onAction="#updateSales" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="UPDATE">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -475,22 +470,17 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtNameDeleteEx" layoutX="30.0" layoutY="170.0" prefHeight="20.0" prefWidth="189.0">
+                        <TextField fx:id="txtTotalDeleteEx" layoutX="30.0" layoutY="170.0" prefHeight="20.0" prefWidth="189.0">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtPhoneDeleteEx" layoutX="30.0" layoutY="230.0" prefHeight="20.0" prefWidth="189.0">
+                        <TextField fx:id="txtDescDeleteEx" layoutX="30.0" layoutY="230.0" prefHeight="20.0" prefWidth="189.0">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtAddressDeleteEx" layoutX="30.0" layoutY="291.0" prefHeight="20.0" prefWidth="189.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="txtIdDeleteEx" layoutX="30.0" layoutY="349.0" prefHeight="20.0" prefWidth="189.0">
+                        <TextField fx:id="txtFechaDeleteEx" layoutX="30.0" layoutY="291.0" prefHeight="20.0" prefWidth="189.0">
                            <font>
                               <Font size="20.0" />
                            </font>

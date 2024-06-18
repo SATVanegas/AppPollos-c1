@@ -22,9 +22,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class PrincipalController extends Application {
@@ -105,6 +107,8 @@ public class PrincipalController extends Application {
     private TabPane TabPaneSales;
     @FXML
     private TabPane TabPaneExpenses;
+    @FXML
+    private CheckBox ChEstadoSa;
 
     @FXML
     private TableView<Customer> Allcustomers;
@@ -239,37 +243,37 @@ public class PrincipalController extends Application {
         }
 
     }
-    // modificar para que coincida con delete sales
+//    // modificar para que coincida con delete sales
+//    @FXML
+//    private void updateSales(){
+//        boolean nameChanged = !txt.getText().equals(cs.getName());
+//        boolean phoneChanged = !txtPhoneUpdateCus.getText().equals(cs.getPhone());
+//        boolean addressChanged = !txtAddressUpdateCus.getText().equals(cs.getAddress());
+//
+//        if (!nameChanged && !phoneChanged && !addressChanged) {
+//            Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
+//        } else {
+//
+//            if (nameChanged) {
+//                cs.setName(txtNameUpdateCus.getText());
+//            }
+//
+//            if (phoneChanged) {
+//                cs.setPhone(txtPhoneUpdateCus.getText());
+//            }
+//
+//            if (addressChanged) {
+//                cs.setAddress(txtAddressUpdateCus.getText());
+//            }
+//
+//
+//            repoCustomer.save(cs);
+//        }
+//
+//    }
+
     @FXML
-    private void updateSales(){
-        boolean nameChanged = !txt.getText().equals(cs.getName());
-        boolean phoneChanged = !txtPhoneUpdateCus.getText().equals(cs.getPhone());
-        boolean addressChanged = !txtAddressUpdateCus.getText().equals(cs.getAddress());
-
-        if (!nameChanged && !phoneChanged && !addressChanged) {
-            Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
-        } else {
-
-            if (nameChanged) {
-                cs.setName(txtNameUpdateCus.getText());
-            }
-
-            if (phoneChanged) {
-                cs.setPhone(txtPhoneUpdateCus.getText());
-            }
-
-            if (addressChanged) {
-                cs.setAddress(txtAddressUpdateCus.getText());
-            }
-
-
-            repoCustomer.save(cs);
-        }
-
-    }
-
-    @FXML
-    private void addSales() throws SQLException {
+    private void addSales() throws SQLException, ParseException {
 
         Sales sl = new Sales();
         Customer customer = new Customer(Integer.parseInt(txtIdCusSa.getText()));
@@ -277,8 +281,10 @@ public class PrincipalController extends Application {
         sl.setMonto(Double.parseDouble(txtMontoCusSa.getText()));
         sl.setCantidad(Integer.valueOf(txtCantidadCusSa.getText()));
         sl.setPeso(Double.parseDouble(txtPesoSa.getText()));
-        sl.setFechaCompra(new Date(txtFechaSa.getText()));
-        sl.setEstado(Boolean.parseBoolean(txtEstadoSa.getText()));
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        sl.setFechaCompra(sqlDate);
+        sl.setEstado(ChEstadoSa.isSelected());
 
         try(Connection conn = ConexionDataBase.getInstance()){
             RepositorioGenerico<Sales> repoSales = new SalesRepositorio();
@@ -288,7 +294,7 @@ public class PrincipalController extends Application {
             txtCantidadCusSa.clear();
             txtPesoSa.clear();
             txtFechaSa.clear();
-            txtEstadoSa.clear();
+            ChEstadoSa.setSelected(false);
         }
     }
 

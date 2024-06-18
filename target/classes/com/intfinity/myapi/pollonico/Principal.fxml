@@ -3,6 +3,7 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -216,12 +217,12 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnAddSa" layoutX="108.0" layoutY="488.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD CUSTOMER">
+                        <Button fx:id="btnAddSa" layoutX="108.0" layoutY="488.0" mnemonicParsing="false" onAction="#addSales" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD CUSTOMER">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtFechaSa" layoutX="108.0" layoutY="350.0" prefHeight="39.0" prefWidth="264.0" promptText="FECHA">
+                        <TextField fx:id="txtFechaSa" layoutX="108.0" layoutY="350.0" prefHeight="39.0" prefWidth="264.0" promptText="FECHA yyyy-MM-dd">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -231,11 +232,10 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtEstadoSa" layoutX="108.0" layoutY="411.0" prefHeight="39.0" prefWidth="264.0" promptText="ESTADO">
+                        <CheckBox fx:id="ChEstadoSa" layoutX="108.0" layoutY="411.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Entregado?">
                            <font>
-                              <Font size="20.0" />
-                           </font>
-                        </TextField>
+                              <Font name="System Bold" size="20.0" />
+                           </font></CheckBox>
                      </children>
                   </AnchorPane>
                </content>
@@ -268,7 +268,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnSearchUpdateSa" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchSalesUpdate" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
+                        <Button fx:id="btnSearchUpdateSa" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>
                               <Font size="22.0" />
                            </font>

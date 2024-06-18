@@ -250,7 +250,7 @@ public class PrincipalController extends Application {
     // modificar para que coincida con delete sales
     @FXML
     private void updateSales(){
-        boolean CusChanged = !txtCusUpdateSa.getText().equals(sl.getCustomer());
+        boolean CusChanged = !txtCusUpdateSa.getText().equals(sl.getCustomer().getId());
         boolean MontoChanged = !txtMontoUpdateSa.getText().equals(sl.getMonto());
         boolean CantidadChanged = !txtCantidadUpdateSa.getText().equals(sl.getCantidad());
         boolean PesoChanged = !txtPesoUpdateIdSa.getText().equals(sl.getPeso());
@@ -262,8 +262,9 @@ public class PrincipalController extends Application {
         } else {
 
             if (CusChanged) {
-                Customer customer = new Customer(Integer.parseInt(txtIdCusSa.getText()));
-                sl.setCustomer(customer);
+                Customer cust = new Customer();
+                cust.setId(Integer.valueOf(txtIdCusSa.getText()));
+                sl.setCustomer(cust);
             }
 
             if (MontoChanged) {

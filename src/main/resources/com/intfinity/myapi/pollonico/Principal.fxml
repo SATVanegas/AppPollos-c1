@@ -268,7 +268,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnSearchUpdateSa" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
+                        <Button fx:id="btnSearchUpdateSa" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchSalesUpdate" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -293,7 +293,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnUpdateSa" layoutX="31.0" layoutY="497.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="UPDATE">
+                        <Button fx:id="btnUpdateSa" layoutX="31.0" layoutY="497.0" mnemonicParsing="false" onAction="#updateSales" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="UPDATE">
                            <font>
                               <Font size="22.0" />
                            </font>

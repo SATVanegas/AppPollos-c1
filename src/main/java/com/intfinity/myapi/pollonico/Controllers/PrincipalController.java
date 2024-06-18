@@ -162,6 +162,7 @@ public class PrincipalController extends Application {
     }
 
     // Esta funcion pide los txt de update y delete para pasarles el texto del resultado de la busqueda de customer
+    @FXML
     private void pasartxtCusTexto(TextField txtSearch, TextField txtPhone, TextField txtAddress, TextField txtName, TextField txtId) {
         repoSales.searchById(Integer.valueOf(txtSearch.getText()));
         if(cs.getId() > 0){
@@ -261,22 +262,22 @@ public class PrincipalController extends Application {
         } else {
 
             if (CusChanged) {
-                cs.setName(txtCusUpdateSa.getText());
+                sl.setName(txtCusUpdateSa.getText());
             }
 
             if (MontoChanged) {
-                cs.setPhone(txtMontoUpdateSa.getText());
+                sl.setPhone(txtMontoUpdateSa.getText());
             }
 
             if (CantidadChanged) {
-                cs.setAddress(txtCusUpdateSa.getText());
+                sl.setAddress(txtCusUpdateSa.getText());
             }
 
             if (PesoChanged) {
-                cs.setAddress(txtPesoUpdateIdSa.getText());
+                sl.setAddress(txtPesoUpdateIdSa.getText());
             }
             if (FechaChanged) {
-                cs.setAddress(txtFechaUpdateIdSa.getText());
+                sl.setAddress(txtFechaUpdateIdSa.getText());
             }
             if (EstadoChanged) {
                 cs.setAddress(txtEstadoUpdateIdSa1.getText());

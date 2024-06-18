@@ -123,14 +123,28 @@ public class PrincipalController extends Application {
 
     @FXML
     private void updateCustomer(){
-        if (txtNameUpdateCus.getText().equals(cs.getName())
-                || txtPhoneUpdateCus.getText().equals(cs.getPhone())
-                || txtAddressUpdateCus.getText().equals(cs.getAddress())){
-            Help.displayWarning("No a realizado ningun cambio","Porfavor realice cambios para actualizar","tonto");
-        }else{
-            Customer customer = new Customer(txtNameUpdateCus.getText(),txtPhoneUpdateCus.getText(),txtAddressUpdateCus.getText());
-            customer.setId(cs.getId());
-            repoCustomer.save(customer);
+        boolean nameChanged = !txtNameUpdateCus.getText().equals(cs.getName());
+        boolean phoneChanged = !txtPhoneUpdateCus.getText().equals(cs.getPhone());
+        boolean addressChanged = !txtAddressUpdateCus.getText().equals(cs.getAddress());
+
+        if (!nameChanged && !phoneChanged && !addressChanged) {
+            Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
+        } else {
+
+            if (nameChanged) {
+                cs.setName(txtNameUpdateCus.getText());
+            }
+
+            if (phoneChanged) {
+                cs.setPhone(txtPhoneUpdateCus.getText());
+            }
+
+            if (addressChanged) {
+                cs.setAddress(txtAddressUpdateCus.getText());
+            }
+
+
+            repoCustomer.save(cs);
         }
 
     }

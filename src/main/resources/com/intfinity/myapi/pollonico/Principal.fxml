@@ -268,7 +268,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnSearchUpdateSa" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
+                        <Button fx:id="btnSearchUpdateSa" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchSalesUpdate" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>
                               <Font size="22.0" />
                            </font>

@@ -35,6 +35,25 @@ public class PrincipalController extends Application {
     public TextField txtAddressDeleteCus;
     public TextField txtIdDeleteCus;
     public Button btnDeleteCus;
+    public TextField txtSearchUpdateSa;
+    public Button btnSearchUpdateSa;
+    public TextField txtCusUpdateSa;
+    public TextField txtMontoUpdateSa;
+    public TextField txtCantidadUpdateSa;
+    public TextField txtPesoUpdateIdSa;
+    public Button btnUpdateSa;
+    public TextField txtFechaUpdateIdSa;
+    public TextField txtEstadoUpdateIdSa1;
+    public Tab deleteSales;
+    public Button btnSearchDeleteSa;
+    public TextField txtSearchDeleteSa;
+    public TextField txtCustomerDeleteSa;
+    public TextField txtMontoDeleteSa;
+    public TextField txtCantidadDeleteSa;
+    public TextField txtPesoDeleteSa;
+    public Button btnDeleteSa;
+    public TextField txtFechaDeleteSa;
+    public TextField txtEstadoDeleteSa;
     List<Customer> customers;
     private int actualizacion = 0;
     private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
@@ -139,20 +158,42 @@ public class PrincipalController extends Application {
     }
 
     // Esta funcion pide los txt de update y delete para pasarles el texto del resultado de la busqueda de sales
-    private void pasartxtSalesTexto(TextField txtSearch, TextField txtPhone, TextField txtAddress, TextField txtName, TextField txtId) {
-        repoCustomer.searchById(Integer.valueOf(txtSearch.getText()));
-        if(cs.getId() > 0){
-            txtPhone.setText(cs.getPhone());
-            txtAddress.setText(cs.getAddress());
-            txtName.setText(cs.getName());
-            txtId.setText(String.valueOf(cs.getId()));
+    @FXML
+    private void pasartxtSalesTexto(TextField txtSearch, TextField txtCusId, TextField txtMonto, TextField txtCantidad, TextField txtPeso, TextField txtFecha, TextField txtEstado) {
+        repoSales.searchById(Integer.valueOf(txtSearch.getText()));
+        if(sl.getId() > 0){
+            txtCusId.setText(String.valueOf(sl.getCustomer().getId()));
+            txtMonto.setText(String.valueOf(sl.getMonto()));
+            txtCantidad.setText(String.valueOf(sl.getCantidad()));
+            txtPeso.setText(String.valueOf(sl.getPeso()));
+            txtFecha.setText(String.valueOf(sl.getFechaCompra()));
+            txtEstado.setText(String.valueOf(sl.isEstado()));
         }
+    }
+    @FXML
+    private void searchSalesUpdate(){
+        pasartxtSalesTexto(txtSearchUpdateSa,txtCusUpdateSa,txtMontoUpdateSa,txtCantidadUpdateSa,txtPesoUpdateIdSa,txtFechaUpdateIdSa,txtEstadoUpdateIdSa1);
+
+    }
+
+    @FXML
+    private void searchSalesDelete(){
+        pasartxtSalesTexto(txtSearchDeleteSa,txtCustomerDeleteSa,txtMontoDeleteSa,txtCantidadDeleteSa,txtPesoDeleteSa,txtFechaDeleteSa,txtEstadoDeleteSa);
+
     }
 
     @FXML
     private void searchCustomer(){
         pasartxtCusTexto(txtSearchDeleteCus, txtPhoneDeleteCus, txtAddressDeleteCus, txtNameDeleteCus, txtIdDeleteCus);
 
+    }
+
+    @FXML
+    private void deleteSale(){
+        if(sl.hasNullFields()){
+            Help.displayWarning("No existe el id", "Por favor, valide nuevamente", "tonto");
+        }
+        repoSales.remove(sl.getId());
     }
 
     @FXML
@@ -189,6 +230,55 @@ public class PrincipalController extends Application {
             repoCustomer.save(cs);
         }
 
+    }
+    // modificar para que coincida con delete sales
+    @FXML
+    private void updateSales(){
+        boolean nameChanged = !txt.getText().equals(cs.getName());
+        boolean phoneChanged = !txtPhoneUpdateCus.getText().equals(cs.getPhone());
+        boolean addressChanged = !txtAddressUpdateCus.getText().equals(cs.getAddress());
+
+        if (!nameChanged && !phoneChanged && !addressChanged) {
+            Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
+        } else {
+
+            if (nameChanged) {
+                cs.setName(txtNameUpdateCus.getText());
+            }
+
+            if (phoneChanged) {
+                cs.setPhone(txtPhoneUpdateCus.getText());
+            }
+
+            if (addressChanged) {
+                cs.setAddress(txtAddressUpdateCus.getText());
+            }
+
+
+            repoCustomer.save(cs);
+        }
+
+    }
+
+    @FXML
+    private void addSales() throws SQLException {
+
+        Sales sl = new Sales();
+        sl.setName(txtNameCus.getText());
+        sl.setAddress(tfAddressCus.getText());
+        sl.setPhone(tfPhoneCus.getText());
+        sl.setName(txtNameCus.getText());
+        sl.setAddress(tfAddressCus.getText());
+        sl.setPhone(tfPhoneCus.getText());
+        sl.setPhone(tfPhoneCus.getText());
+
+        try(Connection conn = ConexionDataBase.getInstance()){
+            RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
+            repoCustomer.save(cs);
+            txtNameCus.clear();
+            tfPhoneCus.clear();
+            tfAddressCus.clear();
+        }
     }
 
     @FXML

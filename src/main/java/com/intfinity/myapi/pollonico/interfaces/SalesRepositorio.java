@@ -60,7 +60,9 @@ public class SalesRepositorio implements RepositorioGenerico <Sales>{
             Help.displayMessage("Gasto no encontrado"
                     ,"verifica que se encunetre bien escrito",
                     "El gasto con el id" + id+ " no existe");
+            sales.setId(0);
         }else {
+
             rObjectId(sales);
         }
     }

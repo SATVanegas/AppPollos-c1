@@ -262,25 +262,28 @@ public class PrincipalController extends Application {
         } else {
 
             if (CusChanged) {
-                sl.setName(txtCusUpdateSa.getText());
+                Customer customer = new Customer(Integer.parseInt(txtIdCusSa.getText()));
+                sl.setCustomer(customer);
             }
 
             if (MontoChanged) {
-                sl.setPhone(txtMontoUpdateSa.getText());
+                sl.setMonto(Double.parseDouble(txtMontoUpdateSa.getText()));
             }
 
             if (CantidadChanged) {
-                sl.setAddress(txtCusUpdateSa.getText());
+                sl.setCantidad(Integer.valueOf(txtCusUpdateSa.getText()));
             }
 
             if (PesoChanged) {
-                sl.setAddress(txtPesoUpdateIdSa.getText());
+                sl.setPeso(Double.parseDouble(txtPesoUpdateIdSa.getText()));
             }
             if (FechaChanged) {
-                sl.setAddress(txtFechaUpdateIdSa.getText());
+                java.util.Date date = new java.util.Date();
+                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                sl.setFechaCompra(sqlDate);
             }
             if (EstadoChanged) {
-                cs.setAddress(txtEstadoUpdateIdSa1.getText());
+                sl.setEstado(Boolean.parseBoolean(txtEstadoUpdateIdSa1.getText()));
             }
 
 

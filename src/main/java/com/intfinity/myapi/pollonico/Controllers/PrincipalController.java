@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class PrincipalController extends Application {
 
@@ -197,4 +198,3 @@ public class PrincipalController extends Application {
         TabPaneExpenses.setVisible(showExpenses);
     }
 }
-

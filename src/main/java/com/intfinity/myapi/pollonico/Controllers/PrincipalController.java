@@ -22,10 +22,16 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 
 public class PrincipalController extends Application {
 
+    public Button btnSearchDeleteCus;
+    public TextField txtSearchDeleteCus;
+    public TextField txtNameDeleteCus;
+    public TextField txtPhoneDeleteCus;
+    public TextField txtAddressDeleteCus;
+    public TextField txtIdDeleteCus;
+    public Button btnDeleteCus;
     List<Customer> customers;
     private int actualizacion = 0;
     private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
@@ -110,7 +116,7 @@ public class PrincipalController extends Application {
     }
 
     @FXML
-    private void searchCustomer(){
+    private void searchCustomerUpdate(){
         repoCustomer.searchById(Integer.valueOf(txtSearchUpdateCus.getText()));
         if(cs.getId() > 0){
             txtPhoneUpdateCus.setText(cs.getPhone());
@@ -119,6 +125,26 @@ public class PrincipalController extends Application {
             txtUpdateIdCus.setText(String.valueOf(cs.getId()));
         }
 
+    }
+
+    @FXML
+    private void searchCustomer(){
+        repoCustomer.searchById(Integer.valueOf(txtSearchDeleteCus.getText()));
+        if(cs.getId() > 0){
+            txtPhoneDeleteCus.setText(cs.getPhone());
+            txtAddressDeleteCus.setText(cs.getAddress());
+            txtNameDeleteCus.setText(cs.getName());
+            txtIdDeleteCus.setText(String.valueOf(cs.getId()));
+        }
+
+    }
+
+    @FXML
+    private void deleteCustomer(){
+        if(cs.hasNullFields()){
+            Help.displayWarning("No existe el id", "Por favor, valide nuevamente", "tonto");
+        }
+        repoCustomer.remove(cs.getId());
     }
 
     @FXML

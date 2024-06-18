@@ -104,7 +104,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="searchCustomer" text="Update customer">
+            <Tab fx:id="searchCustomerUpdate" text="Update customer">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -113,7 +113,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnSearchUpdateCus" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchCustomer" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
+                        <Button fx:id="btnSearchUpdateCus" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchCustomerUpdate" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -150,7 +150,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnSearchDeleteCus" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="142.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
+                        <Button fx:id="btnSearchDeleteCus" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" onAction="#searchCustomer" prefHeight="51.0" prefWidth="142.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -180,7 +180,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnDeleteCus" layoutX="30.0" layoutY="417.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="189.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="DELETE">
+                        <Button fx:id="btnDeleteCus" layoutX="30.0" layoutY="417.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="51.0" prefWidth="189.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="DELETE">
                            <font>
                               <Font size="20.0" />
                            </font>

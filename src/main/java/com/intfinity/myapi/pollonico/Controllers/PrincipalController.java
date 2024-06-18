@@ -20,10 +20,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class PrincipalController extends Application {
@@ -54,6 +55,13 @@ public class PrincipalController extends Application {
     public Button btnDeleteSa;
     public TextField txtFechaDeleteSa;
     public TextField txtEstadoDeleteSa;
+    public TextField txtIdCusSa;
+    public TextField txtMontoCusSa;
+    public TextField txtCantidadCusSa;
+    public Button btnAddSa;
+    public TextField txtFechaSa;
+    public TextField txtPesoSa;
+    public TextField txtEstadoSa;
     List<Customer> customers;
     private int actualizacion = 0;
     private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
@@ -264,20 +272,23 @@ public class PrincipalController extends Application {
     private void addSales() throws SQLException {
 
         Sales sl = new Sales();
-        sl.setName(txtNameCus.getText());
-        sl.setAddress(tfAddressCus.getText());
-        sl.setPhone(tfPhoneCus.getText());
-        sl.setName(txtNameCus.getText());
-        sl.setAddress(tfAddressCus.getText());
-        sl.setPhone(tfPhoneCus.getText());
-        sl.setPhone(tfPhoneCus.getText());
+        Customer customer = new Customer(Integer.parseInt(txtIdCusSa.getText()));
+        sl.setCustomer(customer);
+        sl.setMonto(Double.parseDouble(txtMontoCusSa.getText()));
+        sl.setCantidad(Integer.valueOf(txtCantidadCusSa.getText()));
+        sl.setPeso(Double.parseDouble(txtPesoSa.getText()));
+        sl.setFechaCompra(new Date(txtFechaSa.getText()));
+        sl.setEstado(Boolean.parseBoolean(txtEstadoSa.getText()));
 
         try(Connection conn = ConexionDataBase.getInstance()){
-            RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
-            repoCustomer.save(cs);
-            txtNameCus.clear();
-            tfPhoneCus.clear();
-            tfAddressCus.clear();
+            RepositorioGenerico<Sales> repoSales = new SalesRepositorio();
+            repoSales.save(sl);
+            txtIdCusSa.clear();
+            txtMontoCusSa.clear();
+            txtCantidadCusSa.clear();
+            txtPesoSa.clear();
+            txtFechaSa.clear();
+            txtEstadoSa.clear();
         }
     }
 

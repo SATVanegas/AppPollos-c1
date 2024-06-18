@@ -1,5 +1,6 @@
 package com.intfinity.myapi.pollonico.Controllers;
 
+import com.intfinity.myapi.pollonico.Help.Help;
 import com.intfinity.myapi.pollonico.Models.Customer;
 import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 import com.intfinity.myapi.pollonico.interfaces.CustomerRepositorio;
@@ -37,12 +38,22 @@ public class PrincipalController extends Application {
     @FXML
     public TextField tfAddressCus;
     @FXML
+    private TextField txtSearchUpdateCus;
+    @FXML
     private Button btnCustomer;
 
     @FXML
     private Button btnAddCus;
-
-
+    @FXML
+    private Button btnSearchUpdateCus;
+    @FXML
+    private TextField txtNameUpdateCus;
+    @FXML
+    private  TextField txtPhoneUpdateCus;
+    @FXML
+    private TextField txtAddressUpdateCus;
+    @FXML
+    private TextField txtUpdateIdCus;
     @FXML
     private Button btnSales;
     @FXML
@@ -75,8 +86,7 @@ public class PrincipalController extends Application {
     @FXML
     private Button UpdateCus;
 
-
-
+    public static Customer cs = null;
 
 
     public static void main(String[] args) {
@@ -97,6 +107,32 @@ public class PrincipalController extends Application {
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void searchCustomer(){
+        repoCustomer.searchById(Integer.valueOf(txtSearchUpdateCus.getText()));
+        if(cs.getId() > 0){
+            txtPhoneUpdateCus.setText(cs.getPhone());
+            txtAddressUpdateCus.setText(cs.getAddress());
+            txtNameUpdateCus.setText(cs.getName());
+            txtUpdateIdCus.setText(String.valueOf(cs.getId()));
+        }
+
+    }
+
+    @FXML
+    private void updateCustomer(){
+        if (txtNameUpdateCus.getText().equals(cs.getName())
+                || txtPhoneUpdateCus.getText().equals(cs.getPhone())
+                || txtAddressUpdateCus.getText().equals(cs.getAddress())){
+            Help.displayWarning("No a realizado ningun cambio","Porfavor realice cambios para actualizar","tonto");
+        }else{
+            Customer customer = new Customer(txtNameUpdateCus.getText(),txtPhoneUpdateCus.getText(),txtAddressUpdateCus.getText());
+            customer.setId(cs.getId());
+            repoCustomer.save(customer);
+        }
+
     }
 
     @FXML
@@ -124,6 +160,10 @@ public class PrincipalController extends Application {
         Caddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         Cphone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         VBPrincipal.setTranslateX(-230);
+        txtPhoneUpdateCus.setText("");
+        txtAddressUpdateCus.setText("");
+        txtNameCus.setText("");
+        txtUpdateIdCus.setText("");
 
         // Agregar evento para cuando el mouse entra en el botón
         btnCustomer.addEventFilter(MouseEvent.MOUSE_ENTERED, event -> {

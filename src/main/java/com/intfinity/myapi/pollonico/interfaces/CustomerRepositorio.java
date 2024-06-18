@@ -1,5 +1,6 @@
 package com.intfinity.myapi.pollonico.interfaces;
 
+import com.intfinity.myapi.pollonico.Controllers.PrincipalController;
 import com.intfinity.myapi.pollonico.Help.Help;
 import com.intfinity.myapi.pollonico.Models.Customer;
 import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
@@ -7,6 +8,8 @@ import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.intfinity.myapi.pollonico.Controllers.PrincipalController.cs;
 
 public class CustomerRepositorio implements RepositorioGenerico <Customer>{
 
@@ -48,19 +51,21 @@ public class CustomerRepositorio implements RepositorioGenerico <Customer>{
         }
 
         if (customer.hasNullFields()){
-            Help.displayMessage("Gasto no encontrado"
+            Help.displayMessage("Cliente no encontrado"
                     ,"verifica que se encunetre bien escrito",
-                    "El gasto con el id" + id+ " no existe");
-        }else {
-            System.out.println(rObjectId(customer));
-        }
+                    "El Cliente con el id" + id+ " no existe");
 
+            customer.setId(0);
+            rObjectId(customer);
+        }else {
+            rObjectId(customer);
+        }
 
     }
 
     @Override
-    public Customer rObjectId(Customer customer) {
-        return customer;
+    public void rObjectId(Customer customer) {
+        cs = customer;
     }
 
     @Override

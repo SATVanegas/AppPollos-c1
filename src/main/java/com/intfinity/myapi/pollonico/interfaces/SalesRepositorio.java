@@ -59,13 +59,13 @@ public class SalesRepositorio implements RepositorioGenerico <Sales>{
         if (sales.hasNullFields()){
             System.out.println("gay");
         }else {
-            System.out.println(rObjectId(sales));
+            rObjectId(sales);
         }
     }
 
     @Override
-    public Sales rObjectId(Sales sales) {
-        return sales;
+    public void rObjectId(Sales sales) {
+
     }
 
 

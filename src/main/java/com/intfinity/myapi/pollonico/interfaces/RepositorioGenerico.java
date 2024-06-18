@@ -6,7 +6,7 @@ public interface RepositorioGenerico <T> {
 
     List<T> findAll();
     void searchById (Integer id);
-    T rObjectId (T t);
+    void rObjectId (T t);
     void save(T t);
     void remove(Integer id);
 

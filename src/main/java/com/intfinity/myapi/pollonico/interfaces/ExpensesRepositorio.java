@@ -51,14 +51,14 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
                     ,"verifica que se encunetre bien escrito",
                     "El gasto con el id" + id+ " no existe");
         }else {
-            System.out.println(rObjectId(expense));
+            rObjectId(expense);
         }
 
     }
 
     @Override
-    public Expenses rObjectId(Expenses expenses) {
-        return expenses;
+    public void rObjectId(Expenses expenses) {
+
     }
 
 

@@ -104,7 +104,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="updateCustomer" text="Update customer">
+            <Tab fx:id="searchCustomer" text="Update customer">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -113,7 +113,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnSearchUpdateCus" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
+                        <Button fx:id="btnSearchUpdateCus" layoutX="240.0" layoutY="40.0" mnemonicParsing="false" onAction="#searchCustomer" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -138,7 +138,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnUpdateCustomer" layoutX="30.0" layoutY="424.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="UPDATE">
+                        <Button fx:id="btnUpdateCustomer" layoutX="30.0" layoutY="424.0" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="23.0" prefWidth="187.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="UPDATE">
                            <font>
                               <Font size="22.0" />
                            </font>

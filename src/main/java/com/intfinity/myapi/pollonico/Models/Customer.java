@@ -66,7 +66,7 @@ public class Customer {
                 ", id=" + id +
                 '}';
     }
-    public boolean hasNullFields() {
+    public  boolean hasNullFields() {
         return id == null;
     }
 }

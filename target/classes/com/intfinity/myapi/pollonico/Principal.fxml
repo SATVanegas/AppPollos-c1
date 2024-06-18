@@ -79,7 +79,7 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnAddCus" layoutX="108.0" layoutY="359.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD CUSTOMER">
+                        <Button fx:id="btnAddCus" layoutX="108.0" layoutY="359.0" mnemonicParsing="false" onAction="#AddCustomer" prefHeight="51.0" prefWidth="185.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="ADD CUSTOMER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -92,12 +92,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="9.0" prefHeight="589.0" prefWidth="883.0">
+                        <TableView fx:id="Allcustomers" layoutY="9.0" prefHeight="589.0" prefWidth="883.0">
                           <columns>
-                            <TableColumn fx:id="columName" prefWidth="75.0" text="Name" />
-                            <TableColumn fx:id="columPhone" prefWidth="75.0" text="Phone" />
-                              <TableColumn fx:id="columnAddress" prefWidth="75.0" text="Address" />
-                              <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="Cname" prefWidth="75.0" text="Name" />
+                            <TableColumn fx:id="Cphone" prefWidth="75.0" text="Phone" />
+                              <TableColumn fx:id="Caddress" prefWidth="75.0" text="Address" />
+                              <TableColumn fx:id="Cid" prefWidth="75.0" text="Id" />
                           </columns>
                         </TableView>
                      </children>
@@ -470,5 +470,6 @@
             </Tab>
          </tabs>
       </TabPane>
+      <Button fx:id="UpdateCus" layoutX="110.0" layoutY="552.0" mnemonicParsing="false" onAction="#loadCustomers" text="Actualizar" />
    </children>
 </AnchorPane>

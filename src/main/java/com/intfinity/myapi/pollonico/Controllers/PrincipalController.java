@@ -1,24 +1,47 @@
 package com.intfinity.myapi.pollonico.Controllers;
 
+import com.intfinity.myapi.pollonico.Models.Customer;
+import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
+import com.intfinity.myapi.pollonico.interfaces.CustomerRepositorio;
+import com.intfinity.myapi.pollonico.interfaces.RepositorioGenerico;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 
 public class PrincipalController extends Application {
 
+    List<Customer> customers;
+    private int actualizacion = 0;
+    private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
+
+
+    @FXML
+    public TextField txtNameCus;
+    @FXML
+    public TextField tfPhoneCus;
+    @FXML
+    public TextField tfAddressCus;
     @FXML
     private Button btnCustomer;
+
+    @FXML
+    private Button btnAddCus;
+
+
     @FXML
     private Button btnSales;
     @FXML
@@ -28,9 +51,28 @@ public class PrincipalController extends Application {
     @FXML
     private TabPane TabPaneCus;
     @FXML
+    private Tab seeAllCustomer;
+    @FXML
     private TabPane TabPaneSales;
     @FXML
     private TabPane TabPaneExpenses;
+
+    @FXML
+    private TableView<Customer> Allcustomers;
+
+    @FXML
+    private TableColumn<Customer, Integer> Cid;
+
+    @FXML
+    private TableColumn<Customer, String> Cname;
+
+    @FXML
+    private TableColumn<Customer, String> Caddress;
+
+    @FXML
+    private TableColumn<Customer, String> Cphone;
+    @FXML
+    private Button UpdateCus;
 
 
 
@@ -57,8 +99,29 @@ public class PrincipalController extends Application {
     }
 
     @FXML
+    private void AddCustomer() throws SQLException {
+
+        Customer cs = new Customer();
+        cs.setName(txtNameCus.getText());
+        cs.setAddress(tfAddressCus.getText());
+        cs.setPhone(tfPhoneCus.getText());
+        try(Connection conn = ConexionDataBase.getInstance()){
+            RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
+            repoCustomer.save(cs);
+            txtNameCus.clear();
+            tfPhoneCus.clear();
+            tfAddressCus.clear();
+        }
+    }
+
+    @FXML
     public void initialize() {
 
+
+        Cid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        Cname.setCellValueFactory(new PropertyValueFactory<>("name"));
+        Caddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        Cphone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         VBPrincipal.setTranslateX(-230);
 
         // Agregar evento para cuando el mouse entra en el botón
@@ -96,6 +159,17 @@ public class PrincipalController extends Application {
                 VBPrincipal.setTranslateX(-230);
             }
         });
+    }
+    @FXML
+    private void loadCustomers() {
+        // Obtener la lista de clientes
+        List<Customer> customers = repoCustomer.findAll();
+
+        // Convertir la lista a un ObservableList
+        ObservableList<Customer> observableCustomerList = FXCollections.observableArrayList(customers);
+
+        // Establecer los datos en la tabla
+        Allcustomers.setItems(observableCustomerList);
     }
 
     @FXML

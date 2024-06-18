@@ -8,7 +8,7 @@ import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import static com.intfinity.myapi.pollonico.Controllers.PrincipalController.sl;
 public class SalesRepositorio implements RepositorioGenerico <Sales>{
 
     private Connection getConnection() throws SQLException {
@@ -57,7 +57,9 @@ public class SalesRepositorio implements RepositorioGenerico <Sales>{
         }
 
         if (sales.hasNullFields()){
-            System.out.println("gay");
+            Help.displayMessage("Gasto no encontrado"
+                    ,"verifica que se encunetre bien escrito",
+                    "El gasto con el id" + id+ " no existe");
         }else {
             rObjectId(sales);
         }
@@ -65,7 +67,7 @@ public class SalesRepositorio implements RepositorioGenerico <Sales>{
 
     @Override
     public void rObjectId(Sales sales) {
-
+       sl = sales;
     }
 
 

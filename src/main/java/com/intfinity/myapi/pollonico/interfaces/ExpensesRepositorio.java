@@ -7,7 +7,7 @@ import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import static com.intfinity.myapi.pollonico.Controllers.PrincipalController.es;
 public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
 
     private Connection getConnection() throws SQLException {
@@ -58,7 +58,7 @@ public class ExpensesRepositorio implements RepositorioGenerico<Expenses>{
 
     @Override
     public void rObjectId(Expenses expenses) {
-
+        es = expenses;
     }
 
 

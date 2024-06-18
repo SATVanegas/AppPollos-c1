@@ -2,9 +2,12 @@ package com.intfinity.myapi.pollonico.Controllers;
 
 import com.intfinity.myapi.pollonico.Help.Help;
 import com.intfinity.myapi.pollonico.Models.Customer;
+import com.intfinity.myapi.pollonico.Models.Expenses;
+import com.intfinity.myapi.pollonico.Models.Sales;
 import com.intfinity.myapi.pollonico.Util.ConexionDataBase;
 import com.intfinity.myapi.pollonico.interfaces.CustomerRepositorio;
 import com.intfinity.myapi.pollonico.interfaces.RepositorioGenerico;
+import com.intfinity.myapi.pollonico.interfaces.SalesRepositorio;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,6 +38,7 @@ public class PrincipalController extends Application {
     List<Customer> customers;
     private int actualizacion = 0;
     private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
+    private final RepositorioGenerico<Sales> repoSales = new SalesRepositorio();
 
 
     @FXML
@@ -93,6 +97,8 @@ public class PrincipalController extends Application {
     private Button UpdateCus;
 
     public static Customer cs = null;
+    public static Sales sl = null;
+    public static Expenses es = null;
 
 
     public static void main(String[] args) {
@@ -117,25 +123,35 @@ public class PrincipalController extends Application {
 
     @FXML
     private void searchCustomerUpdate(){
-        repoCustomer.searchById(Integer.valueOf(txtSearchUpdateCus.getText()));
-        if(cs.getId() > 0){
-            txtPhoneUpdateCus.setText(cs.getPhone());
-            txtAddressUpdateCus.setText(cs.getAddress());
-            txtNameUpdateCus.setText(cs.getName());
-            txtUpdateIdCus.setText(String.valueOf(cs.getId()));
-        }
+        pasartxtCusTexto(txtSearchUpdateCus, txtPhoneUpdateCus, txtAddressUpdateCus, txtNameUpdateCus, txtUpdateIdCus);
 
+    }
+
+    // Esta funcion pide los txt de update y delete para pasarles el texto del resultado de la busqueda de customer
+    private void pasartxtCusTexto(TextField txtSearch, TextField txtPhone, TextField txtAddress, TextField txtName, TextField txtId) {
+        repoSales.searchById(Integer.valueOf(txtSearch.getText()));
+        if(cs.getId() > 0){
+            txtPhone.setText(cs.getPhone());
+            txtAddress.setText(cs.getAddress());
+            txtName.setText(cs.getName());
+            txtId.setText(String.valueOf(cs.getId()));
+        }
+    }
+
+    // Esta funcion pide los txt de update y delete para pasarles el texto del resultado de la busqueda de sales
+    private void pasartxtSalesTexto(TextField txtSearch, TextField txtPhone, TextField txtAddress, TextField txtName, TextField txtId) {
+        repoCustomer.searchById(Integer.valueOf(txtSearch.getText()));
+        if(cs.getId() > 0){
+            txtPhone.setText(cs.getPhone());
+            txtAddress.setText(cs.getAddress());
+            txtName.setText(cs.getName());
+            txtId.setText(String.valueOf(cs.getId()));
+        }
     }
 
     @FXML
     private void searchCustomer(){
-        repoCustomer.searchById(Integer.valueOf(txtSearchDeleteCus.getText()));
-        if(cs.getId() > 0){
-            txtPhoneDeleteCus.setText(cs.getPhone());
-            txtAddressDeleteCus.setText(cs.getAddress());
-            txtNameDeleteCus.setText(cs.getName());
-            txtIdDeleteCus.setText(String.valueOf(cs.getId()));
-        }
+        pasartxtCusTexto(txtSearchDeleteCus, txtPhoneDeleteCus, txtAddressDeleteCus, txtNameDeleteCus, txtIdDeleteCus);
 
     }
 

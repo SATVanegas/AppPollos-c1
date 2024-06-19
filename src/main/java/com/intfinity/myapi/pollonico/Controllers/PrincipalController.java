@@ -433,13 +433,13 @@ public class PrincipalController extends Application {
     @FXML
     private void loadSales() {
         // Obtener la lista de clientes
-        List<Customer> customers = repoCustomer.findAll();
+        List<Sales> sales = repoSales.findAll();
 
         // Convertir la lista a un ObservableList
-        ObservableList<Customer> observableCustomerList = FXCollections.observableArrayList(customers);
+        ObservableList<Sales> observableSalesList = FXCollections.observableArrayList(sales);
 
         // Establecer los datos en la tabla
-        Allcustomers.setItems(observableCustomerList);
+        allSales.setItems(observableSalesList);
     }
 
     @FXML

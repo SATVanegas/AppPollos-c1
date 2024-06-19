@@ -67,6 +67,7 @@ public class PrincipalController extends Application {
     public TextField txtTotalEx;
     public TextField txtDesEx;
     public TextField txtDateEx;
+    public CheckBox CheckBoxEstadoDeleteSa;
     List<Customer> customers;
     private int actualizacion = 0;
     private final RepositorioGenerico<Customer> repoCustomer = new CustomerRepositorio();
@@ -221,6 +222,14 @@ public class PrincipalController extends Application {
     }
 
     @FXML
+    private void deleteSales(){
+        if(sl.hasNullFields()){
+            Help.displayWarning("No existe el id", "Por favor, valide nuevamente", "tonto");
+        }
+        repoSales.remove(sl.getId());
+    }
+
+    @FXML
     private void updateCustomer(){
         boolean nameChanged = !txtNameUpdateCus.getText().equals(cs.getName());
         boolean phoneChanged = !txtPhoneUpdateCus.getText().equals(cs.getPhone());
@@ -284,7 +293,7 @@ public class PrincipalController extends Application {
                 sl.setFechaCompra(sqlDate);
             }
             if (EstadoChanged) {
-                sl.setEstado(Boolean.parseBoolean(txtEstadoUpdateIdSa1.getText()));
+                sl.setEstado(CheckBoxEstadoDeleteSa.isSelected());
             }
 
 

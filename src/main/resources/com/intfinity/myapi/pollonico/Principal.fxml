@@ -303,11 +303,10 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtEstadoUpdateIdSa1" layoutX="28.0" layoutY="408.0" prefHeight="30.0" prefWidth="190.0">
+                        <CheckBox fx:id="CheckBoxEstadoUpdateSa" layoutX="28.0" layoutY="404.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" text="Estado">
                            <font>
-                              <Font size="20.0" />
-                           </font>
-                        </TextField>
+                              <Font size="24.0" />
+                           </font></CheckBox>
                      </children>
                   </AnchorPane>
                </content>
@@ -346,17 +345,12 @@
                               <Font size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btnDeleteSa" layoutX="30.0" layoutY="521.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="189.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="DELETE">
+                        <Button fx:id="btnDeleteSa" layoutX="30.0" layoutY="521.0" mnemonicParsing="false" onAction="#deleteSales" prefHeight="51.0" prefWidth="189.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="DELETE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
                         <TextField fx:id="txtFechaDeleteSa" layoutX="30.0" layoutY="351.0" prefHeight="20.0" prefWidth="189.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="txtEstadoDeleteSa" layoutX="30.0" layoutY="416.0" prefHeight="20.0" prefWidth="189.0">
                            <font>
                               <Font size="20.0" />
                            </font>

@@ -490,6 +490,6 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Button fx:id="UpdateCus" layoutX="110.0" layoutY="552.0" mnemonicParsing="false" onAction="#loadCustomers" text="Actualizar" />
+      <Button fx:id="updateCus" layoutX="110.0" layoutY="552.0" mnemonicParsing="false" onAction="#loadCustomers" text="Actualizar" />
    </children>
 </AnchorPane>

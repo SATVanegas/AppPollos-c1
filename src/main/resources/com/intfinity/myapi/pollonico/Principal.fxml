@@ -314,7 +314,7 @@
             </Tab>
             <Tab fx:id="deleteSales" text="Delete Sales">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" visible="false">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnSearchDeleteSa" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="142.0" styleClass="buton" stylesheets="@../Styles/stylesPrincipal.css" text="SEARCH">
                            <font>

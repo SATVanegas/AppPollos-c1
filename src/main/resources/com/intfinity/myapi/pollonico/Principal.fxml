@@ -244,15 +244,15 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="9.0" prefHeight="589.0" prefWidth="883.0">
+                        <TableView fx:id="allSales" layoutY="9.0" prefHeight="589.0" prefWidth="883.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Amount" />
-                              <TableColumn prefWidth="75.0" text="Customer" />
-                              <TableColumn prefWidth="75.0" text="Monto" />
-                              <TableColumn prefWidth="75.0" text="Weight" />
-                              <TableColumn prefWidth="75.0" text="State" />
-                              <TableColumn prefWidth="75.0" text="Date" />
-                              <TableColumn fx:id="columIdSa" prefWidth="75.0" text="ID" />
+                              <TableColumn fx:id="Scantidad" prefWidth="75.0" text="Cantidad" />
+                              <TableColumn fx:id="Scus" prefWidth="75.0" text="Customer" />
+                              <TableColumn fx:id="Smonto" prefWidth="75.0" text="Monto" />
+                              <TableColumn fx:id="Speso" prefWidth="75.0" text="Weight" />
+                              <TableColumn fx:id="Sestado" prefWidth="75.0" text="State" />
+                              <TableColumn fx:id="Sfecha" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="Sid" prefWidth="75.0" text="ID" />
                            </columns>
                         </TableView>
                      </children>

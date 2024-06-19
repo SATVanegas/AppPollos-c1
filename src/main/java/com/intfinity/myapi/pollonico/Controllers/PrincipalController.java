@@ -128,7 +128,31 @@ public class PrincipalController extends Application {
 
     @FXML
     private TableColumn<Customer, String> Cphone;
+
     @FXML
+    private TableView<Sales> allSales;
+
+    @FXML
+    private TableColumn<Sales, Integer> Sid;
+
+    @FXML
+    private TableColumn<Sales, Customer> Scus;
+
+    @FXML
+    private TableColumn<Sales, Double> peso;
+
+    @FXML
+    private TableColumn<Sales, Double> monto;
+
+    @FXML
+    private TableColumn<Sales, Integer> cantidad;
+
+    @FXML
+    private TableColumn<Sales, Date> Sfecha;
+
+    @FXML
+    private TableColumn<Sales, Boolean> Sestado;
+
     private Button UpdateCus;
 
     public static Customer cs = null;
@@ -396,6 +420,18 @@ public class PrincipalController extends Application {
     }
     @FXML
     private void loadCustomers() {
+        // Obtener la lista de clientes
+        List<Customer> customers = repoCustomer.findAll();
+
+        // Convertir la lista a un ObservableList
+        ObservableList<Customer> observableCustomerList = FXCollections.observableArrayList(customers);
+
+        // Establecer los datos en la tabla
+        Allcustomers.setItems(observableCustomerList);
+    }
+
+    @FXML
+    private void loadSales() {
         // Obtener la lista de clientes
         List<Customer> customers = repoCustomer.findAll();
 

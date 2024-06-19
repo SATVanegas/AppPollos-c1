@@ -250,6 +250,7 @@ public class PrincipalController extends Application {
     // modificar para que coincida con delete sales
     @FXML
     private void updateSales(){
+
         boolean CusChanged = !txtCusUpdateSa.getText().equals(String.valueOf(sl.getCustomer().getId())); // Asumiendo que getCustomer devuelve un objeto con un método getId()
         boolean MontoChanged = !txtMontoUpdateSa.getText().equals(String.valueOf(sl.getMonto())); // Convertir a String si getMonto devuelve un número
         boolean CantidadChanged = !txtCantidadUpdateSa.getText().equals(String.valueOf(sl.getCantidad())); // Convertir a String si getCantidad devuelve un número
@@ -261,8 +262,9 @@ public class PrincipalController extends Application {
             Help.displayWarning("No se ha realizado ningún cambio", "Por favor, realice cambios para actualizar", "tonto");
         } else {
             if (CusChanged) {
-                Customer customer = new Customer(Integer.parseInt(txtIdCusSa.getText()));
-                sl.setCustomer(customer);
+                Customer cust = new Customer();
+                cust.setId(Integer.valueOf(txtIdCusSa.getText()));
+                sl.setCustomer(cust);
             }
 
             if (MontoChanged) {
